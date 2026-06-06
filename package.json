@@ -1,0 +1,19 @@
+{
+  "name": "rsc-under-the-hood",
+  "version": "1.0.0",
+  "description": "RSC without a framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SP7TECH/rsc-under-the-hood.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SP7TECH/rsc-under-the-hood/issues"
+  },
+  "homepage": "https://github.com/SP7TECH/rsc-under-the-hood#readme"
+}
