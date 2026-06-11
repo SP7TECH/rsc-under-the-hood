@@ -21,4 +21,28 @@ const config = {
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      publicPath: "/assets/",
+      template: "./index.html",
+    }),
+    new ReactServerWebpackPlugin({
+      isServer: false,
+    }),
+  ],
+  output: {
+    chunkFilename: development
+      ? "[id].chunk.js"
+      : "[id].[contenthash].chunk.js",
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+    clean: true,
+  },
+  optimization: {
+    runtimeChunk: "single",
+  },
 };
