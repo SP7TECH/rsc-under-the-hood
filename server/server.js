@@ -1,6 +1,6 @@
 const path = require("node:path");
 const { readFileSync } = require("node:fs");
-const Fastify = reqire("fastify");
+const Fastify = require("fastify");
 const fastifyStaticPlugin = require("@fastify/static");
 const React = require("react");
 const { renderToPipeableStream } = require("react-server-dom-webpack/server");
@@ -38,7 +38,17 @@ fastify.get("/", async function rootHandler(request, reply) {
 });
 
 fastify.get("/react-flight", function reactFlightHandler(request, reply) {
-  // will write in some time
+  try {
+    reply.header("Content-Type", "application/octet-stream");
+    // be careful about whitespace as React Flight is sensitive to it. Make your editor isn't inserting any
+    return reply.send(`1:{"name":"App","env":"Server","key":null,"owner":null,"props":{}}
+0:D"$1"
+0:["$","div",null,{"children":["$","h1",null,{"children":"Notes App"},"$1"]},"$1"]
+`);
+  } catch (err) {
+    request.log.error("react-flight err", err);
+    throw err;
+  }
 });
 
 module.exports = async function start() {
