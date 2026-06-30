@@ -20,4 +20,30 @@ export default function MyNotes() {
 
   const notes = await fetchNotes()
   
+  return (
+    <fieldset>
+      <legend>Server Component</legend>
+
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            {notes.from.map(({ id, note, from_user, to_user }) => (
+              <tr key={id}>
+                <td>{from_user}</td>
+                <td>{to_user}</td>
+                <td>{note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </fieldset>
+  )
 }
